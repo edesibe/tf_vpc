@@ -1,5 +1,6 @@
 # AWS VPC module for Terraform
 A lightweight VPC module for Terraform.
+
 ## Usage
 ```
 module "vpc" {
@@ -10,5 +11,6 @@ module "vpc" {
 }
 ```
 See `interface.tf` for additional configurable variables.
+
 ## License
 MIT
