@@ -39,6 +39,6 @@ output "private_route_table_ids" {
 }
 
 output "default_security_group_id" {
-  value       = "${aws_vpc.environment.default_security_group.id}"
+  value       = "${aws_vpc.environment.default_security_group_id}"
   description = "ID of vpc's default security group"
 }
