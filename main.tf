@@ -43,7 +43,7 @@ resource "aws_route" "private_nat_gateway" {
   count                  = "${length(var.private_subnets)}"
   route_table_id         = "${element(aws_route_table.private.*.id, count.index)}"
   destination_cidr_block = "0.0.0.0/0"
-  nat_gatway_id          = "${element(aws_nat_gateway.environment.*.id, count.index)}"
+  nat_gateway_id         = "${element(aws_nat_gateway.environment.*.id, count.index)}"
 }
 
 resource "aws_subnet" "public" {
@@ -126,7 +126,7 @@ resource "aws_instance" "bastion" {
   ami                         = "${lookup(var.bastion_ami, var.region)}"
   instance_type               = "${var.bastion_instance_type}"
   key_name                    = "${var.key_name}"
-  vpc_security_group          = ["${aws_security_group.bastion.id}"]
+  vpc_security_group_ids      = ["${aws_security_group.bastion.id}"]
   subnet_id                   = "${element(aws_subnet.public.*.id, 0)}"
   associate_public_ip_address = true
 
