@@ -27,8 +27,10 @@ variable "bastion_instance_type" {
 }
 
 variable "bastion_ami" {
+  description = "The AMIs (ubuntu) to use for bastion instance"
   default = {
     "eu-central-1" = "ami-0bdf93799014acdc4"
+    "us-east-1" = "ami-0ac019f4fcb7cb7e6"
   }
 }
 
