@@ -28,9 +28,10 @@ variable "bastion_instance_type" {
 
 variable "bastion_ami" {
   description = "The AMIs (ubuntu) to use for bastion instance"
+
   default = {
     "eu-central-1" = "ami-0bdf93799014acdc4"
-    "us-east-1" = "ami-0ac019f4fcb7cb7e6"
+    "us-east-1"    = "ami-0ac019f4fcb7cb7e6"
   }
 }
 
@@ -51,4 +52,9 @@ variable "key_name" {
 variable "map_public_ip_on_launch" {
   description = "Should be failse if you do not want to auto-assign public IP on launch"
   default     = true
+}
+
+variable "azs" {
+  description = "A list of availability zones in the region"
+  default     = []
 }

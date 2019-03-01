@@ -51,6 +51,7 @@ resource "aws_subnet" "public" {
   cidr_block              = "${element(var.public_subnets, count.index)}"
   map_public_ip_on_launch = "${var.map_public_ip_on_launch}"
   vpc_id                  = "${aws_vpc.environment.id}"
+  availability_zone       = "${element(var.azs, count.index)}"
 
   tags {
     Name = "${var.environment}-public-${count.index}"
@@ -58,9 +59,10 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private" {
-  count      = "${length(var.private_subnets)}"
-  cidr_block = "${element(var.private_subnets, count.index)}"
-  vpc_id     = "${aws_vpc.environment.id}"
+  count             = "${length(var.private_subnets)}"
+  cidr_block        = "${element(var.private_subnets, count.index)}"
+  vpc_id            = "${aws_vpc.environment.id}"
+  availability_zone = "${element(var.azs, count.index)}"
 
   tags {
     Name = "${var.environment}-private-${count.index}"
